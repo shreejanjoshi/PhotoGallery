@@ -21,13 +21,25 @@ class Database{
 
     public function query($sql){
         $result = mysqli_query($this->connection, $sql);
-        if(!$result){
-            die("Query Failed");
-        }
+
         return $result;
     }
 
+    //helper methode
+
+    private function  confirm_query($result){
+        if(!$result){
+            die("Query Failed");
+        }
+    }
+
+    //escape string from , when we wanna put data in out database
+    public function escape_string($string){
+       $escaped_string = mysqli_real_escape_string($this->connection, $string);
+       return $escaped_string;
+    }
 }
+
 
 $database = new Database();
 
