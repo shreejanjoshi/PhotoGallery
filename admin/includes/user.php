@@ -8,6 +8,7 @@ class User{
     public $last_name;
     public $password;
 
+    //what we do here is find this query, we can find that function under
     public static function find_all_users(){
         return self::find_this_query("SELECT * FROM users");
     }
@@ -17,11 +18,25 @@ class User{
         global $database;
 
         //find this sql will pass query
-        $result_set = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1");
-        $found_user = mysqli_fetch_array($result_set);
+        $the_result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1");
+
+        //?->do this :->else
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
+
+        //if(!empty($the_result_array)){
+
+            //grab the first item from array
+            //$first_item = array_shift($the_result_array);
+          //  return $first_item;
+        //}else{
+          //  return false;
+        //}
+
         return $found_user;
     }
 
+    //We create an array here to save some of the objects that are coming through because we using these instantiation.
+    //while loop to fetch that data base, that table we get that we set. result set to row. now we get tablein row
     public static function find_this_query($sql){
         global $database;
 
@@ -36,7 +51,7 @@ class User{
         return $the_object_array;
     }
 
-    //value of the record comes from find user by if in admin content
+    //value of the record comes from find this qiuery by if in admin content
     public static function instantation($the_record){
         //ref to this object its self
         $the_object = new self();
@@ -47,10 +62,11 @@ class User{
         // $the_object->first_name = $found_user['first_name'];
         // $the_object->last_name = $found_user['last_name'];
 
-        //
+        //loop throught the table
         foreach($the_record as $the_attribute => $value) {
 
             if($the_object->has_the_attribute($the_attribute)){
+                //value is username , firstname
                 $the_object->$the_attribute = $value;
             }
         }
