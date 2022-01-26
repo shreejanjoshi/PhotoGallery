@@ -130,6 +130,10 @@ class User{
 // The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
 
 
+    public function save(){
+         return isset($this->id) ? $this->update() : $this->create();
+    }
+
 //create CRUD
     public function create(){
         global $database;
@@ -164,6 +168,9 @@ class User{
         $database->query($sql);
 
         //build in function
+        //Gets the number of affected rows in a previous MySQL operation Returns the number of rows affected by the last INSERT, UPDATE, REPLACE or DELETE query.
+        //For SELECT statements mysqli_affected_rows() works like mysqli_num_rows().
+        //if the row is affected, and in our case we want to affect only one row, it should be 1.
         return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
