@@ -9,25 +9,22 @@
             </h1>
 
             <?php
-                //$user = new User();
-                //$user->username ="gg4654646";
-                //$user->password ="1231321";
-                //$user->first_name ="h5465465ello";
-                //$user->last_name ="worl856798d";
-
-                //$user->create();
+                $user = new User();
+                $user->username ="gg4654646";
+                $user->password ="1231321";
+                $user->first_name ="h5465465ello";
+                $user->last_name ="worl856798d";
+                $user->create();
 
                 //$user = User::find_user_by_id(11);
 
                 //$user->delete();
 
-            //$user = User::find_user_by_id(12);
-
+            //$user = User::find_user_by_id(13);
             //$user->username = "hknkj";
             //$user->save();
 
             //$user = new User();
-
             //$user->username ="hi";
             //$user->save();
             ?>
