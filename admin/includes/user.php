@@ -23,15 +23,6 @@ class User{
         //?->do this :->else
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
 
-        //if(!empty($the_result_array)){
-
-            //grab the first item from array
-            //$first_item = array_shift($the_result_array);
-          //  return $first_item;
-        //}else{
-          //  return false;
-        //}
-
         return $found_user;
     }
 
@@ -49,6 +40,13 @@ class User{
             $the_object_array[] = self::instantation($row);
         }
         return $the_object_array;
+    }
+
+    public static function verify_user($username, $password){
+        global $database;
+
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
     }
 
     //value of the record comes from find this qiuery by if in admin content

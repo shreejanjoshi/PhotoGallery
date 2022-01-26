@@ -38,6 +38,7 @@ class Database{
     }
 
     //escape string from , when we wanna put data in out database
+    //clean up data santitise
     public function escape_string($string){
        $escaped_string = $this->connection->real_escape_string($string);
        return $escaped_string;
