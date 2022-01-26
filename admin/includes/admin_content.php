@@ -18,9 +18,8 @@
                 //$user->create();
 
                 $user = User::find_user_by_id(10);
-                $user->last_name = "World";
 
-                $user->update();
+                $user->delete();
             ?>
 
             <ol class="breadcrumb">
