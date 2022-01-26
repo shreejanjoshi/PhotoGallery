@@ -11,16 +11,16 @@ class User{
     public $password;
 
     //what we do here is find this query, we can find that function under
-    public static function find_all_users(){
-        return self::find_this_query("SELECT * FROM users");
+    public static function find_all(){
+        return self::find_this_query("SELECT * FROM " .self::$db_table. " ");
     }
 
-    public static function find_user_by_id($user_id){
+    public static function find_by_id($user_id){
         //datbase class last code that is this database---- methode from another
         global $database;
 
         //find this sql will pass query
-        $the_result_array = self::find_this_query("SELECT * FROM users WHERE id = $user_id LIMIT 1");
+        $the_result_array = self::find_this_query("SELECT * FROM " .self::$db_table. " WHERE id = $user_id LIMIT 1");
 
         //if this is not empty We do array shifts. So we get the first result of that array.
         //?->do this :->else
@@ -49,7 +49,7 @@ class User{
         $username = $database->escape_string($username);
         $password = $database->escape_string($password);
 
-        $sql = "SELECT * FROM users WHERE ";
+        $sql = "SELECT * FROM " .self::$db_table. " WHERE ";
         $sql .= "username = '{$username}' AND password = '{$password}' LIMIT 1";
 
         //find this sql will pass query
