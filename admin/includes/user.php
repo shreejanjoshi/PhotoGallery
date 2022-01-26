@@ -90,10 +90,8 @@ class User{
         //if atttribute exitst in array $object prop then return true or false
         return array_key_exists($the_attribute, $object_property);
     }
-}
 
-
-// User::find_all()  ... Here is the flow once is called
+    // User::find_all()  ... Here is the flow once is called
 
 // 1.   It goes to the find_all method
 
@@ -129,4 +127,19 @@ class User{
 
 
 
-// The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal. 
+// The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
+
+public function create(){
+        global $database;
+
+    $sql = "INSERT INTO users (username, password, first_name, last_name) "
+    $sql .= "VALUES (";
+    $sql .= "'" . $database->escape_string($this->username) . "', '";
+    $sql .= "'" . $database->escape_string($this->password) . "', '";
+    $sql .= "'" . $database->escape_string($this->first_name) . "', '";
+    $sql .= "'" . $database->escape_string($this->last_name) . "')";
+
+}
+}
+
+
