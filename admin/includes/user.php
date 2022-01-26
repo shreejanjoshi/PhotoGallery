@@ -129,17 +129,24 @@ class User{
 
 // The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
 
-public function create(){
+    public function create(){
         global $database;
 
-    $sql = "INSERT INTO users (username, password, first_name, last_name) "
-    $sql .= "VALUES (";
-    $sql .= "'" . $database->escape_string($this->username) . "', '";
-    $sql .= "'" . $database->escape_string($this->password) . "', '";
-    $sql .= "'" . $database->escape_string($this->first_name) . "', '";
-    $sql .= "'" . $database->escape_string($this->last_name) . "')";
+        $sql = "INSERT INTO users (username, password, first_name, last_name) ";
+        $sql .= "VALUES (";
+        $sql .= $database->escape_string($this->username) . "', '";
+        $sql .= $database->escape_string($this->password) . "', '";
+        $sql .= $database->escape_string($this->first_name) . "', '";
+        $sql .= $database->escape_string($this->last_name) . "')";
 
-}
+        if($database->query($sql)){
+            //pull the id out and store it in id
+            $this->id = $database->the_insert_id();
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
 
