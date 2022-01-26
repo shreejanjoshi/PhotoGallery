@@ -25,6 +25,13 @@ class Session{
         }
     }
 
+    //logout function
+    public function logout() {
+        unset($_SESSION['user_id']);
+        unset($this->user_id);
+        $this->signed_in = false;
+    }
+
     private function check_the_login(){
         //if user come and it found out user is their
         if(isset($_SESSION['user_id'])){
