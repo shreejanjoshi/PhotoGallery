@@ -130,6 +130,10 @@ class User{
 
 // The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
 
+    protected function properties(){
+        //we will get all the properties back lastname, username , password
+        return get_object_vars($this);
+    }
 
     public function save(){
          return isset($this->id) ? $this->update() : $this->create();
@@ -139,7 +143,10 @@ class User{
     public function create(){
         global $database;
 
-        $sql = "INSERT INTO " .self::$db_table. " (username, password, first_name, last_name)";
+        $properties = $this->properties();
+
+        //implode seprate the value ______________ array keys to pull out the keys of that array key -> username , password...
+        $sql = "INSERT INTO " .self::$db_table. " (". implode(",", array_keys($properties)).")";
         $sql .= "VALUES ('";
         $sql .= $database->escape_string($this->username) . "', '";
         $sql .= $database->escape_string($this->password) . "', '";
