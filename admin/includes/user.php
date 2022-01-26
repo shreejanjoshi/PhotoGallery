@@ -23,8 +23,6 @@ class User{
         //if this is not empty We do array shifts. So we get the first result of that array.
         //?->do this :->else
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
-
-        return $found_user;
     }
 
     //We create an array here to save some of the objects that are coming through because we using these instantiation.
