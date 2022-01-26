@@ -17,14 +17,14 @@
 
                 //$user->create();
 
-                //$user = User::find_user_by_id(10);
+                $user = User::find_user_by_id(11);
 
-                //$user->delete();
+                $user->delete();
 
-            $user = User::find_user_by_id(11);
+            //$user = User::find_user_by_id(11);
 
-            $user->password ="hihi";
-            $user->save();
+            //$user->password ="hihi";
+            //$user->save();
 
             //$user = new User();
 
