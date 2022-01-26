@@ -7,6 +7,17 @@
                 Admin
                 <small>Subheading</small>
             </h1>
+
+            <?php
+                $user = new User();
+                $user->username ="gg4654646";
+                $user->password ="1231321";
+                $user->first_name ="h5465465ello";
+                $user->last_name ="worl856798d";
+
+                $user->create();
+            ?>
+
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
