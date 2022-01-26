@@ -129,6 +129,8 @@ class User{
 
 // The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
 
+
+//create CRUD
     public function create(){
         global $database;
 
@@ -146,6 +148,23 @@ class User{
         }else{
             return false;
         }
+    }
+
+    public function update(){
+        global $database;
+
+        $sql = "UPDATE users SET ";
+        //escpaing string before submiting
+        $sql .= "username= '" . $database->escape_string($this->username) . "', ";
+        $sql .= "password= '" . $database->escape_string($this->password) . "', ";
+        $sql .= "first_name= '" . $database->escape_string($this->first_name) . "', ";
+        $sql .= "last_name= '" . $database->escape_string($this->last_name) . "' ";
+        $sql .= " WHERE id= " . $database->escape_string($this->id);
+
+        $database->query($sql);
+
+        //build in function
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 }
 
