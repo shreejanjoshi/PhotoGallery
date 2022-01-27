@@ -16,8 +16,8 @@
                 //$user->last_name ="worl856798d";
                 //$user->create();
 
-                $user = User::find_by_id(28);
-                $user->delete();
+                //$user = User::find_by_id(28);
+                //$user->delete();
 
             //$user = User::find_by_id(14);
             //$user->username = "sdfsdf";
@@ -26,6 +26,11 @@
             //$user = new User();
             //$user->username ="hi";
             //$user->save();
+
+            $users = User::find_all();
+            foreach($users as $user){
+                echo $user->username;
+            }
             ?>
 
             <ol class="breadcrumb">

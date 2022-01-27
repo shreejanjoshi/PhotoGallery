@@ -1,11 +1,15 @@
 <?php
 
-//commonly user methode
+//parent class ---commonly user methode
 class DB_object{
+
+    protected static $db_table = 'users';
 
     //what we do here is find this query, we can find that function under
     public static function find_all(){
-        return self::find_this_query("SELECT * FROM " .self::$db_table. " ");
+
+        //self is error look for late static binding
+        return static::find_this_query("SELECT * FROM " .static::$db_table. " ");
     }
 
     public static function find_by_id($user_id){
@@ -13,7 +17,7 @@ class DB_object{
         global $database;
 
         //find this sql will pass query
-        $the_result_array = self::find_this_query("SELECT * FROM " .self::$db_table. " WHERE id = $user_id LIMIT 1");
+        $the_result_array = static::find_this_query("SELECT * FROM " .static::$db_table. " WHERE id = $user_id LIMIT 1");
 
         //if this is not empty We do array shifts. So we get the first result of that array.
         //?->do this :->else
@@ -31,15 +35,17 @@ class DB_object{
 
         //fetch to get result
         while ($row = mysqli_fetch_array($result_set)){
-            $the_object_array[] = self::instantation($row);
+            $the_object_array[] = static::instantation($row);
         }
         return $the_object_array;
     }
 
     //value of the record comes from find this qiuery by if in admin content
     public static function instantation($the_record){
-        //ref to this object its self
-        $the_object = new self();
+
+        //ref to this object its self --- now static
+        $calling_class = get_called_class();
+        $the_object = new $calling_class;
 
         // $the_object->id = $found_user['id'];
         // $the_object->username = $found_user['username'];
