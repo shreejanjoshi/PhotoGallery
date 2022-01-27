@@ -10,12 +10,12 @@ class DB_object{
         return static::find_by_query("SELECT * FROM " .static::$db_table. " ");
     }
 
-    public static function find_by_id($user_id){
+    public static function find_by_id($id){
         //datbase class last code that is this database---- methode from another
         global $database;
 
         //find this sql will pass query
-        $the_result_array = static::find_by_query("SELECT * FROM " .static::$db_table. " WHERE id = $user_id LIMIT 1");
+        $the_result_array = static::find_by_query("SELECT * FROM " .static::$db_table. " WHERE id = $id LIMIT 1");
 
         //if this is not empty We do array shifts. So we get the first result of that array.
         //?->do this :->else

@@ -11,7 +11,8 @@
             <?php
             //$user = new User();$user->username ="555";$user->password ="1231321";$user->first_name ="h5465465ello";$user->last_name ="worl856798d";$user->create();
 
-            //$user = User::find_by_id(28);$user->delete();
+            //$user = User::find_by_id(1);//$user->delete();
+            //echo $user->username;
 
             //$user = User::find_by_id(14);$user->username = "sdfsdf";$user->save();
 
