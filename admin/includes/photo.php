@@ -42,11 +42,53 @@ class Photo extends DB_object{
 
         } else {
 
+            //file name
             $this->filename =  basename($file['name']);
             $this->tmp_path = $file['tmp_name'];
             $this->type     = $file['type'];
             $this->size     = $file['size'];
 
+        }
+    }
+
+    public function save(){
+        if($this->photo_id){
+            $this->update();
+        }else{
+            //if error is empty then we good
+            if(!empty($this->errors)){
+                return false;
+            }
+
+            if(empty($this->filename) || empty($this->tmp_path)){
+                $this->errors[] = "the file was not available";
+                return false;
+            }
+
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+
+            //make we dont make same file
+            if(file_exists($target_path)) {
+                $this->errors[] = "The file {$this->filename} already exists";
+                return false;
+            }
+
+            //move the file
+            //take temp 2 para temp path and where is going parmate path
+            if(move_uploaded_file($this->tmp_path, $target_path)) {
+
+                //after we move this check this if create unset tem path
+                if(	$this->create()) {
+
+                    unset($this->tmp_path);
+                    return true;
+                }
+            }else{
+                //if mothing work
+                $this->error[] = "The file directory probably does not have permission";
+                return false;
+            }
+            $this->create();
         }
     }
 }
