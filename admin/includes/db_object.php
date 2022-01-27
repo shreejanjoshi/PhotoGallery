@@ -3,13 +3,11 @@
 //parent class ---commonly user methode
 class DB_object{
 
-    protected static $db_table = 'users';
-
     //what we do here is find this query, we can find that function under
     public static function find_all(){
 
         //self is error look for late static binding
-        return static::find_this_query("SELECT * FROM " .static::$db_table. " ");
+        return static::find_by_query("SELECT * FROM " .static::$db_table. " ");
     }
 
     public static function find_by_id($user_id){
@@ -17,7 +15,7 @@ class DB_object{
         global $database;
 
         //find this sql will pass query
-        $the_result_array = static::find_this_query("SELECT * FROM " .static::$db_table. " WHERE id = $user_id LIMIT 1");
+        $the_result_array = static::find_by_query("SELECT * FROM " .static::$db_table. " WHERE id = $user_id LIMIT 1");
 
         //if this is not empty We do array shifts. So we get the first result of that array.
         //?->do this :->else
@@ -26,7 +24,7 @@ class DB_object{
 
     //We create an array here to save some of the objects that are coming through because we using these instantiation.
     //while loop to fetch that data base, that table we get that we set. result set to row. now we get tablein row
-    public static function find_this_query($sql){
+    public static function find_by_query($sql){
         global $database;
 
         $result_set = $database->query($sql);
@@ -113,4 +111,83 @@ class DB_object{
 
 // The purpose of this is to basically create our own API to deal with the database query so that in the future we can plug in other API's. Now there still a couple things I want to improve to make this way better, cleaner and more universal.
 
+    protected function properties(){
+        //we will get all the properties back lastname, username , password
+        $properties = array();
+
+        foreach(static::$db_table_fields as $db_field){
+            //check proprty extis in this class
+            if(property_exists($this, $db_field)){
+                $properties[$db_field] = $this->$db_field;
+            }
+        }
+        return $properties;
+    }
+
+    protected function clean_properties(){
+        global $database;
+
+        $clean_properties = array();
+
+        foreach ($this->properties() as $key => $value){
+            $clean_properties[$key]= $database->escape_string($value);
+        }
+        return $clean_properties;
+    }
+
+    public function save(){
+        return isset($this->id) ? $this->update() : $this->create();
+    }
+
+//create CRUD
+    public function create(){
+        global $database;
+
+        $properties = $this->clean_properties();
+
+        //implode seprate the value ______________ array keys to pull out the keys of that array key -> username , password...
+        $sql = "INSERT INTO " .static::$db_table. " (". implode(",", array_keys($properties)).")";
+        $sql .= "VALUES ('". implode("','", array_values($properties)) ."')";
+
+        if($database->query($sql)){
+            //pull the id out and store it in id
+            $this->id = $database->the_insert_id();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function update(){
+        global $database;
+
+        $properties = $this->clean_properties();
+        $properties_pairs = array();
+
+        foreach($properties as $key => $value){
+            $properties_pairs[] = "{$key}='{$value}'";
+        }
+
+        $sql = "UPDATE " . static::$db_table . " SET ";
+        //escpaing string before submiting
+        $sql .= implode(",", $properties_pairs);
+        $sql .= " WHERE id= " . $database->escape_string($this->id);
+
+        $database->query($sql);
+
+        //build in function
+        //Gets the number of affected rows in a previous MySQL operation Returns the number of rows affected by the last INSERT, UPDATE, REPLACE or DELETE query.
+        //For SELECT statements mysqli_affected_rows() works like mysqli_num_rows().
+        //if the row is affected, and in our case we want to affect only one row, it should be 1.
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+    }
+
+    public function delete(){
+        global $database;
+
+        $sql = "DELETE FROM " . static::$db_table . " WHERE id=". $database->escape_string($this->id) . " LIMIT 1";
+
+        $database->query($sql);
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
+    }
 }
