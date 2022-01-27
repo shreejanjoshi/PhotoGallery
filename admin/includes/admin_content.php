@@ -17,7 +17,10 @@
 
             //$user = new User();$user->username ="gggg";$user->save();
 
-            $users = User::find_all();foreach($users as $user){echo $user->username;}
+           //$users = User::find_all();foreach($users as $user){echo $user->username;}
+
+            $photos = Photo::find_all();foreach($photos as $photo){echo $photo->title ."<br>";}
+            $photo = new Photo();$photo->title ="555";$photo->description ="1231321";$photo->filename ="h5465465ello";$photo->type ="worl856798d";$photo->create();
             ?>
 
             <ol class="breadcrumb">
