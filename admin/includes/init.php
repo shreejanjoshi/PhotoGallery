@@ -4,7 +4,7 @@
 //const in php /
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 //server doc will take up to htdox
-define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . 'PhotoGallery');
+define('SITE_ROOT', 'C:' .DS. 'xampp' .DS. 'htdocs' .DS. 'OopPhp' .DS. 'PhotoGallery');
 
 defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT.DS.'admin'.DS.'includes');
 

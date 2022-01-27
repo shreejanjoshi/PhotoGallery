@@ -19,9 +19,9 @@
 
            //$users = User::find_all();foreach($users as $user){echo $user->username;}
 
-            $photos = Photo::find_all();foreach($photos as $photo){echo $photo->title ."<br>";}
-            $photo = new Photo();$photo->title ="555";$photo->description ="1231321";$photo->filename ="h5465465ello";$photo->type ="worl856798d";$photo->create();
-            echo INCLUDES_PATH
+            //$photos = Photo::find_all();foreach($photos as $photo){echo $photo->title ."<br>";}
+            //$photo = new Photo();$photo->title ="555";$photo->description ="1231321";$photo->filename ="h5465465ello";$photo->type ="worl856798d";$photo->create();
+            //echo INCLUDES_PATH
             ?>
 
             <ol class="breadcrumb">
