@@ -60,12 +60,12 @@
                             <input type="text" name="caption" class="form-control" value="<?php echo $photo->title; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="caption">Alternate Text</label>
+                            <label for="alternate_text">Alternate Text</label>
                             <input type="text" name="alternate_text" class="form-control" value="<?php echo $photo->alternate_text; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="caption">Description</label>
-                            <textarea class="form-control" name="description" id="" cols="30" rows="10"><?php echo $photo->description; ?></textarea>
+                            <label for="summernote">Description</label>
+                            <textarea id="summernote" class="form-control" name="description" id="" cols="30" rows="10"><?php echo $photo->description; ?></textarea>
                         </div>
                     </div>
 
