@@ -16,6 +16,7 @@ if(!$session->is_signed_in()){ redirect("login.php");}
     $photo = Photo::find_by_id($_GET['id']);
 
     if($photo){
+        //specfiek function to delete files
         $photo->delete_photo();
         redirect("photos.php");
     }else{
