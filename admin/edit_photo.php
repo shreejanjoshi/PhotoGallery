@@ -72,6 +72,9 @@
 
                     <div class="col-md-4" >
                         <div  class="photo-info-box">
+                            <div class="form-group">
+                                <a class="thumbnail" href=""><img src="<?php echo $photo->picture_path()?>" alt=""></a>
+                            </div>
                             <div class="info-box-header">
                                 <h4>Save <span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span></h4>
                             </div>

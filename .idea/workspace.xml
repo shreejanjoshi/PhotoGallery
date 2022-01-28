@@ -4,8 +4,7 @@
     <list default="true" id="fa2556f1-a775-4457-9852-b2610de3c98a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/edit_photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/edit_photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/includes/photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/photo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/photos.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/photos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +13,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,6 +42,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/admin" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -58,7 +65,7 @@
       <workItem from="1642849509314" duration="10935000" />
       <workItem from="1643107414448" duration="14638000" />
       <workItem from="1643196806278" duration="4889000" />
-      <workItem from="1643203323124" duration="31521000" />
+      <workItem from="1643203323124" duration="33225000" />
     </task>
     <servers />
   </component>
