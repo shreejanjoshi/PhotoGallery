@@ -10,6 +10,7 @@ class User extends DB_object{
     public $last_name;
     public $password;
     public $user_image;
+
     public $upload_directory = "images";
     public $image_placeholder = "http://placehold.it/400x400&text=image";
 
@@ -62,9 +63,6 @@ class User extends DB_object{
     }
 
     public function save_user_and_image(){
-        if($this->id){
-            $this->update();
-        }else{
             //if error is empty then we good
             if(!empty($this->errors)){
                 return false;
@@ -99,7 +97,7 @@ class User extends DB_object{
                 return false;
             }
             $this->create();
-        }
+
     }
 
 
