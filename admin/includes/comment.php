@@ -1,5 +1,5 @@
 <?php
-class User extends DB_object{
+class Comment extends DB_object{
 
     protected static $db_table = 'comments';
     protected static $db_table_fields = array('id', 'photo_id', 'author', 'body');
@@ -27,7 +27,7 @@ class User extends DB_object{
     }
 
     //finding speciefk photo in comments
-    public static function find_the_comment($photo_id=0){
+    public static function find_the_comments($photo_id=0){
         global $database;
 
         $sql ="SELECT * FROM ". self::$db_table ." WHERE photo_id =" . $database->escape_string($photo_id) . " ORDER BY photo_id ASC";
