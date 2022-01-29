@@ -1,5 +1,4 @@
 <?php
-
 class User extends DB_object{
 
     protected static $db_table = 'comments';
@@ -9,7 +8,23 @@ class User extends DB_object{
     public $author;
     public $body;
 
+    // because we can implement additional code logic and checks, in that way we encompass everything related to the creation of the comment inside one method, once all the checks are passed, you can call the create method in order to create the recor
+    //default value
+    public static function create_comment($photo_id, $author="John", $body="") {
+        //if not empty
+        if(!empty($photo_id) && !empty($author) && !empty($body)){
+            $comment = new Comment();
 
+            $comment->photo_id = (int)$photo_id;
+            $comment->author = $author;
+            $comment->body = $body;
+
+            return $comment;
+        }else{
+            //if empty
+            return false;
+        }
+    }
 }
 
 
