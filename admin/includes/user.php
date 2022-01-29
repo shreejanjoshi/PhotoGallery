@@ -62,7 +62,7 @@ class User extends DB_object{
         }
     }
 
-    public function save_user_and_image(){
+    public function upload_user_photo(){
             //if error is empty then we good
             if(!empty($this->errors)){
                 return false;
@@ -86,11 +86,9 @@ class User extends DB_object{
             if(move_uploaded_file($this->tmp_path, $target_path)) {
 
                 //after we move this check this if create unset tem path
-                if(	$this->create()) {
 
                     unset($this->tmp_path);
                     return true;
-                }
             }else{
                 //if mothing work
                 $this->error[] = "The file directory probably does not have permission";
