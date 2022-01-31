@@ -8,6 +8,7 @@
                 <small>Subheading</small>
             </h1>
 
+            <!-- dashborad snippets code found in website -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -107,6 +108,11 @@
 
 
             </div> <!--First Row-->
+
+            <!--google api-->
+            <div class="row">
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
 
         </div>
     </div>
