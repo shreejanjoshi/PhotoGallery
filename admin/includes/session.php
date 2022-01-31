@@ -6,10 +6,16 @@ class Session{
     public $user_id;
     public $message;
 
+    //dashborad view
+    public $count;
+
     function __construct(){
         session_start();
         $this->check_the_login();
         $this->check_message();
+
+        //dashborad view
+        $this->visitor_count();
     }
 
     public function message($msg=""){
@@ -60,30 +66,39 @@ class Session{
         unset($_SESSION['user_id']);
         unset($this->user_id);
         $this->signed_in = false;
-    
-    
-        }
+    }
 
-    private function check_the_login() {
+    private function check_the_login(){
         //if user come and it found out user is their
-        if(isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
 
             $this->user_id = $_SESSION['user_id'];
             $this->signed_in = true;
-       
-            } else {
-       
-                unset($this->user_id);
-                $this->signed_in = false;
-       
-            }
-       
-       
+
+
+        } else {
+
+            unset($this->user_id);
+            $this->signed_in = false;
+
         }
+    }
+
+
+    //dashbord view
+    public function visitor_count() {
+        if(isset($_SESSION['count'])) {
+            //if set add
+                return $this->count = $_SESSION['count']++;
+        }else{
+            //if some reason didnt set set 1
+                return $_SESSION['count'] = 1;
+        }
+    }
        
        
-       
-       }
+
+}
        
 
 $session = new Session();
