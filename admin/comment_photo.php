@@ -37,7 +37,6 @@ $comments = Comment::find_the_comments($_GET['id']);
                 <h1 class="page-header">
                     comments
                 </h1>
-                <a href="add_user.php" class="btn btn-primary">Add User</a>
                 <br>
 
                 <div class="col-md-12">
