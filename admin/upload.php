@@ -4,6 +4,7 @@
 $message = "";
 if(isset($_POST['submit'])){
     $photo = new Photo();
+    $photo->user_id = $_SESSION['user_id'];
     $photo->title = $_POST['title'];
     $photo->set_file($_FILES['file_upload']);
 
@@ -43,7 +44,6 @@ if(isset($_POST['submit'])){
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Upload
-                        <small>Subheading</small>
                     </h1>
 
                     <div class="col-md-6">

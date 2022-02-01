@@ -29,9 +29,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        comments
+                        All Comments
                     </h1>
-                    <a href="add_user.php" class="btn btn-primary">Add User</a>
                     <br>
 
                     <div class="col-md-12">

@@ -98,6 +98,11 @@ class User extends DB_object{
 
     }
 
+    //to show speiecfe user photo
+    public function photos(){
+        return Photo::find_by_query("SELECT * FROM photos WHERE user_id =" .$this->id);
+    }
+
 
 }
 

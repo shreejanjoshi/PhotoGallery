@@ -1,7 +1,14 @@
 <?php include("includes/header.php"); ?>
 <?php if(!$session->is_signed_in()){ redirect("login.php");} ?>
 <?php
-    $photos = Photo::find_all();
+
+//show all user photo
+//$photos = Photo::find_all();
+
+//to show speiecfe user photo
+//current logged in user
+//photo() is in user class
+    $photos = User::find_by_id($_SESSION['user_id'])->photos();
 ?>
 
     <!-- Navigation -->
@@ -29,8 +36,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Photos
-                        <small>Subheading</small>
+                        All Photos
                     </h1>
 
                     <div class="col-md-12">

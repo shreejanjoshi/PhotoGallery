@@ -2,3 +2,13 @@
     width: 200px;
     height: 150px !important;
 }
+
+/*home page pagination*/
+
+.pager .active a {
+
+    background-color: #000 !important;
+    color: #fff !important;
+
+
+}
