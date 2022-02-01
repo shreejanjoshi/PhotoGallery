@@ -8,9 +8,6 @@ How database is connected, how to make data, get data and all the CRUD system.
 I am really passionate in learning PHP so to grow more knowledge in Php I bought this course in Udemy.
 [PHP OOP](https://www.udemy.com/course/oop-php-object-oriented-programing-with-project-1-course/)
 
-## Instructor
-Edwin Diaz, Udemy
-
 ## Features of the Photo Project
 * User as a class
 * An upload page, using a module
